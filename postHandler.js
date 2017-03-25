@@ -7,7 +7,7 @@ const rmdir = require('rimraf')
 const title = 'CSV Uploader for Watson Discovery Service'
 
 
-var interval = 1 * 1000; // 1 second;
+var interval = 0.05 * 1000; // 0.05 second;
 
 module.exports = (req, res, next) => {
   const b = req.body
@@ -24,7 +24,7 @@ module.exports = (req, res, next) => {
   // we have a default value so the check the callback evaluates to true
   const sendFile = (path, i = -1) => {
   // add 1 second delay per loop iteration to prevent timeout of discovery
-     setTimeout( function (i) {}
+     setTimeout( function (i) {
     const file = fs.createReadStream(path)
     discovery.addDocument({
       collection_id: b.collection_id,
